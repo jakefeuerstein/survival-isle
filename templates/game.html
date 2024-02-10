@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survival Isle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles_game.css') }}">
+</head>
+<body>
+    <div class="screen">
+        <div class="map">
+            <form action="/" method="post">
+                {% for x in range(5) %}
+                   {% for y in range(5) %}
+                    <button class="tile" id="tile{{ x|string + y|string }}" type="submit" name="move" value="{{ x|string + ',' + y|string }}"></button>
+                    {% endfor %}
+                {% endfor %}
+            </form>
+            <div class="player">
+<!--            <img class="player_img" src="static/player2.png" alt="player_img">-->
+            </div>
+        </div>
+        <div class="display">
+            <div class="game-title">
+                <h1>{{ display("game_title") }}</h1>
+            </div>
+            <div class="game-time">
+                <h2>Day {{ display("game_time")[0] }}, {{ display("game_time")[1] }}</h2>
+            </div>
+            <div class="player-condition">
+                <h2>Player Condition</h2>
+                {% for key, value in display("player_condition").items(): %}
+                <h2>  • {{ key.capitalize() }}: {{ value }} </h2>
+                {% endfor %}
+            </div>
+            <div class="num-moves">
+                <h2>{{ display("num_moves") }} moves remaining</h2>
+            </div>
+            <div class="actions">
+                <h2>Actions: </h2>
+                    <form action="/" method="post">
+                        <button class="action-button" type="submit" name="harvest" value="harvest">Harvest resource</button>
+                        <button class="action-button" type="submit" name="build_fire" value="build_fire">Build fire</button>
+                        <button class="action-button" type="submit" name="build_shelter" value="build_shelter">Build shelter</button>
+                    </form>
+            </div>
+            <div class="move-dialogue">
+                <h2>{{ display("move_dialogue") }}</h2>
+            </div>
+            {% if display("move_buttons"): %}
+            <div class="move-buttons">
+                <button class="move-yes-button" id="move-yes" type="submit" name="move" value="yes">Yes</button>
+                <button class="move-no-button" id="move-no" type="submit" name="move" value="no">No</button>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>

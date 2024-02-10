@@ -1,0 +1,366 @@
+body {
+    background-color: transparent;
+}
+
+.screen {
+    position: relative;
+    width: 100%;
+    height: 900px;
+    background-color: black;
+}
+
+.map {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 70%;
+    top: 450px;
+    width: 200px;
+    height: 200px;
+    background-color: gray;
+    z-index: 10;
+}
+
+.display {
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    color: white;
+}
+
+.game-title {
+    text-align: center;
+    left: 50%;
+    top: 50px;
+}
+
+.game-time {
+    position: absolute;
+    text-align: center;
+    left: 10%;
+    top: 250px;
+}
+
+.player-condition {
+    position: absolute;
+    left: 10%;
+    top: 350px;
+}
+
+.num-moves {
+    position: absolute;
+    left: 30%;
+    top: 250px;
+}
+
+.actions {
+    position: absolute;
+    left: 30%;
+    top: 350px;
+    border: 2px solid green;
+}
+
+.action-button {
+    display: block;
+}
+
+.move-dialogue {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 70%;
+    top: 600px;
+}
+
+.move-yes-button {
+    font-size: 20px;
+    width: 70px;
+}
+
+.move-no-button {
+    font-size: 20px;
+    width: 70px;
+}
+
+.move-buttons {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 70%;
+    top: 650px;
+}
+
+.tile {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    background-color: blue;
+}
+
+.player_img: {
+    max-width: 100%;
+    height: auto;
+    background: transparent;
+}
+
+break
+
+#tile00 {
+   left: 0px;
+   top: 0px;
+   background-color: blue;
+}
+
+#tile00:hover {
+   background-color: gray;
+}
+
+#tile01 {
+   left: 50px;
+   top: 0px;
+   background-color: blue;
+}
+
+#tile01:hover {
+   background-color: gray;
+}
+
+#tile02 {
+   left: 100px;
+   top: 0px;
+   background-color: blue;
+}
+
+#tile02:hover {
+   background-color: gray;
+}
+
+#tile03 {
+   left: 150px;
+   top: 0px;
+   background-color: blue;
+}
+
+#tile03:hover {
+   background-color: gray;
+}
+
+#tile04 {
+   left: 200px;
+   top: 0px;
+   background-color: blue;
+}
+
+#tile04:hover {
+   background-color: gray;
+}
+
+#tile10 {
+   left: 0px;
+   top: 50px;
+   background-color: blue;
+}
+
+#tile10:hover {
+   background-color: gray;
+}
+
+#tile11 {
+   left: 50px;
+   top: 50px;
+   background-color: green;
+}
+
+#tile11:hover {
+   background-color: gray;
+}
+
+#tile12 {
+   left: 100px;
+   top: 50px;
+   background-color: green;
+}
+
+#tile12:hover {
+   background-color: gray;
+}
+
+#tile13 {
+   left: 150px;
+   top: 50px;
+   background-color: green;
+}
+
+#tile13:hover {
+   background-color: gray;
+}
+
+#tile14 {
+   left: 200px;
+   top: 50px;
+   background-color: blue;
+}
+
+#tile14:hover {
+   background-color: gray;
+}
+
+#tile20 {
+   left: 0px;
+   top: 100px;
+   background-color: blue;
+}
+
+#tile20:hover {
+   background-color: gray;
+}
+
+#tile21 {
+   left: 50px;
+   top: 100px;
+   background-color: green;
+}
+
+#tile21:hover {
+   background-color: gray;
+}
+
+#tile22 {
+   left: 100px;
+   top: 100px;
+   background-color: green;
+}
+
+#tile22:hover {
+   background-color: gray;
+}
+
+#tile23 {
+   left: 150px;
+   top: 100px;
+   background-color: green;
+}
+
+#tile23:hover {
+   background-color: gray;
+}
+
+#tile24 {
+   left: 200px;
+   top: 100px;
+   background-color: blue;
+}
+
+#tile24:hover {
+   background-color: gray;
+}
+
+#tile30 {
+   left: 0px;
+   top: 150px;
+   background-color: blue;
+}
+
+#tile30:hover {
+   background-color: gray;
+}
+
+#tile31 {
+   left: 50px;
+   top: 150px;
+   background-color: green;
+}
+
+#tile31:hover {
+   background-color: gray;
+}
+
+#tile32 {
+   left: 100px;
+   top: 150px;
+   background-color: green;
+}
+
+#tile32:hover {
+   background-color: gray;
+}
+
+#tile33 {
+   left: 150px;
+   top: 150px;
+   background-color: green;
+}
+
+#tile33:hover {
+   background-color: gray;
+}
+
+#tile34 {
+   left: 200px;
+   top: 150px;
+   background-color: blue;
+}
+
+#tile34:hover {
+   background-color: gray;
+}
+
+#tile40 {
+   left: 0px;
+   top: 200px;
+   background-color: blue;
+}
+
+#tile40:hover {
+   background-color: gray;
+}
+
+#tile41 {
+   left: 50px;
+   top: 200px;
+   background-color: blue;
+}
+
+#tile41:hover {
+   background-color: gray;
+}
+
+#tile42 {
+   left: 100px;
+   top: 200px;
+   background-color: blue;
+}
+
+#tile42:hover {
+   background-color: gray;
+}
+
+#tile43 {
+   left: 150px;
+   top: 200px;
+   background-color: blue;
+}
+
+#tile43:hover {
+   background-color: gray;
+}
+
+#tile44 {
+   left: 200px;
+   top: 200px;
+   background-color: blue;
+}
+
+#tile44:hover {
+   background-color: gray;
+}
+
+.player {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 2px solid yellow;
+    left: 100px;
+    top: 100px;
+}
+
