@@ -24,26 +24,26 @@ def game():
         # Button was clicked
         if request.method == "POST":
             tile_loc = map.get_player_loc()
-            # harvest action
+            # Harvest action
             if request.form.get('harvest'):
                 print("harvest button clicked")
                 actions.harvest(tile_loc)
-            # Move button
+            # Move action
             if request.form.get('move'):
-                print("move button clicked")
-                selected_tile_loc = request.form.get('submit')
+                print("main: move button clicked")
+                selected_tile_loc = request.form.get('move')
                 # Facilitate move
-                actions.move(selected_tile_loc)
-            # build fire action
+                actions.move(map, selected_tile_loc)
+            # Build fire action
             elif request.form.get('build_fire'):
                 print("build fire button clicked")
                 actions.build_fire(tile_loc)
-            # build shelter action
+            # Build shelter action
             elif request.form.get('build_shelter'):
                 print("build shelter button clicked")
                 actions.build_shelter(tile_loc)
 
-        return render_template("game.html")
+        return render_template("game.html", map=map.get_layout())
 
 @app.route("/home")
 def home():
@@ -62,19 +62,19 @@ def display(element):
         return num_moves
     elif element == "player_options":
         return player_options
-    elif element == "move_dialogue":
-        print(valid_move)
-        if valid_move == None:
-            return ""
-        if valid_move:
-            return "Move to this tile?"
-        elif valid_move == False:
-            return "You must move to an adjacent tile"
-    elif element == "move_buttons":
-        if valid_move:
-            return True
-        else:
-            return False
+    # elif element == "move_dialogue":
+    #     print(valid_move)
+    #     if valid_move == None:
+    #         return ""
+    #     if valid_move:
+    #         return "Move to this tile?"
+    #     elif valid_move == False:
+    #         return "You must move to an adjacent tile"
+    # elif element == "move_buttons":
+    #     if valid_move:
+    #         return True
+    #     else:
+    #         return False
 
 # Allow display function to be accessed with Jinja
 app.jinja_env.globals.update(display=display)

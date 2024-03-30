@@ -40,7 +40,6 @@ class Tile:
 class LandTile(Tile):
 
     def __init__(self):
-
         super().__init__()
         self.color = "green"
         self.resources['food'] = random.choice(LAND_FOOD_PROB)

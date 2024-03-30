@@ -4,10 +4,10 @@ TILE_WIDTH = 50
 class CSSWriter:
 
     def __init__(self):
-        self.grid = []
+        self.layout = []
 
-    def update(self, map_layout, player_loc):
-        new_grid = []
+    def update_layout(self, map_layout, player_loc):
+        new_layout = []
         for x in range(len(map_layout)):
             col = []
             for y in range(len(map_layout[0])):
@@ -27,15 +27,15 @@ class CSSWriter:
                             'hover': hover
                             })
                 # build grid element
-            new_grid .append(col)
-            self.grid = new_grid
+            new_layout.append(col)
+            self.layout = new_layout
             self.update_css(player_loc)
 
     def update_css(self, player_loc):
         with open("static/styles/styles_game.css", 'r+') as styles_file:
-            # Convert styles_text to list of lines
+            # Convert styles_file to list of lines
             styles_text = styles_file.readlines()
-            # Extract constant section of styles_file
+            # Extract static section of styles_file
             for i, row in enumerate(styles_text):
                 # Find breakpoint
                 if row.find("break") != -1:
@@ -44,20 +44,20 @@ class CSSWriter:
                     # Convert styles_text to string
                     styles_text = "".join(styles_text)
             addition = "\n"
-            # Generate variable section of styles_file
-            for x in range(len(self.grid)):
-                for y in range(len(self.grid[0])):
-                    tile = self.grid[x][y]
+            # Generate variable section of styles file with layout elems
+            for x in range(len(self.layout)):
+                for y in range(len(self.layout[0])):
+                    elem = self.layout[x][y]
                     # Create CSS element
-                    css_elem = f'#tile{tile["id"]} {{' \
+                    css_elem = f'#tile{elem["id"]} {{' \
                                f'\n   left: {TILE_WIDTH*y}px;' \
                                f'\n   top: {TILE_WIDTH*x}px;' \
-                               f'\n   background-color: {tile["color"]};' \
+                               f'\n   background-color: {elem["color"]};' \
                                f'\n}}\n\n'
                     css_hover_elem = ""
                     # Create CSS hover element
-                    if tile['hover']:
-                        css_hover_elem = f'#tile{tile["id"]}:hover {{' \
+                    if elem['hover']:
+                        css_hover_elem = f'#tile{elem["id"]}:hover {{' \
                                    f'\n   background-color: gray;' \
                                    f'\n}}\n\n'
                     # Add each CSS element
@@ -69,7 +69,7 @@ class CSSWriter:
                           f'\n    width: {TILE_WIDTH}px;' \
                           f'\n    height: {TILE_WIDTH}px;' \
                           f'\n    border: 2px solid yellow;' \
-                          f'\n    left: {TILE_WIDTH*player_loc[1]}px;'\
+                          f'\n    left: {TILE_WIDTH * player_loc[1]}px;'\
                           f'\n    top: {TILE_WIDTH * player_loc[0]}px;'\
                           f'\n}}\n\n'
             addition += player_elem

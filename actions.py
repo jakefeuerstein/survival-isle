@@ -12,13 +12,12 @@ class Actions:
             # Get player location
             player_loc = map.get_player_loc()
             # Check if move is valid
-            if abs(selected_tile_loc[0] - player_loc[0]) <= 1 \
-            and abs(selected_tile_loc[1] - player_loc[1]) <= 1:
+            if (abs(selected_tile_loc[0] - player_loc[0]) <= 1 and
+                abs(selected_tile_loc[1] - player_loc[1]) <= 1):
                 # Valid move
                 map.set_player_loc(new_player_loc=selected_tile_loc)
                 map.update()
                 # PLACEHOLDER: gt.turn_step()
-                print("player moved")
             else:
                 valid_move = False
                 print("invalid move")
@@ -47,13 +46,7 @@ class Actions:
             tile.create("shelter")
             tile.harvest_resource("wood")
             # Shelter built
-
-
-
         else:
             print("resource count is 0")
-
-
-
 
     player_options = ["move (click tile)", "harvest resource", "build fire", "build shelter", "sleep"]

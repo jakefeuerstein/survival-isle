@@ -9,9 +9,11 @@
     <div class="screen">
         <div class="map">
             <form action="/" method="post">
-                {% for x in range(5) %}
-                   {% for y in range(5) %}
-                    <button class="tile" id="tile{{ x|string + y|string }}" type="submit" name="move" value="{{ x|string + ',' + y|string }}"></button>
+                {% for x in range(map|length) %}  <!--Update to dyanmic range (Phase-1)-->
+                   {% for y in range(map[0]|length) %}  <!--Update to dyanmic range (Phase-1)-->
+                    <button class="tile" id="tile{{ x|string + y|string }}" type="submit" name="move" value="{{ x|string + ',' + y|string }}">
+                        {{ x, y }}
+                    </button>
                     {% endfor %}
                 {% endfor %}
             </form>
@@ -43,15 +45,16 @@
                         <button class="action-button" type="submit" name="build_shelter" value="build_shelter">Build shelter</button>
                     </form>
             </div>
-            <div class="move-dialogue">
-                <h2>{{ display("move_dialogue") }}</h2>
-            </div>
-            {% if display("move_buttons"): %}
-            <div class="move-buttons">
-                <button class="move-yes-button" id="move-yes" type="submit" name="move" value="yes">Yes</button>
-                <button class="move-no-button" id="move-no" type="submit" name="move" value="no">No</button>
-            </div>
-            {% endif %}
+<!--            <div class="move-dialogue">-->
+<!--                <h2></h2>-->
+<!--            </div>-->
+<!--            {% if display("move_buttons"): %}-->
+<!--            <div class="">-->
+<!--                <form action="/" method="post">-->
+<!--                    <button class="move-button" id="move-yes" type="submit" name="move" value="yes">Yes</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--            {% endif %}-->
         </div>
     </div>
 
