@@ -1,35 +1,39 @@
-from game_time import GameTime
-
-gt = GameTime()
-
 class Actions:
 
-    def move(self, map, selected_tile_loc):
-            # Format tile location from str to list
-            selected_tile_loc = selected_tile_loc.split(',')
-            for n in range(len(selected_tile_loc)):
-                selected_tile_loc[n] = int(selected_tile_loc[n])
-            # Get player location
-            player_loc = map.get_player_loc()
-            # Check if move is valid
-            if (abs(selected_tile_loc[0] - player_loc[0]) <= 1 and
-                abs(selected_tile_loc[1] - player_loc[1]) <= 1):
-                # Valid move
-                map.set_player_loc(new_player_loc=selected_tile_loc)
-                map.update()
-                # PLACEHOLDER: gt.turn_step()
-            else:
-                valid_move = False
-                print("invalid move")
+    def move(self, map, selected_tile_loc, gt):
+        gt.turn_step()
+        # Format tile location from str to list
+        selected_tile_loc = selected_tile_loc.split(',')
+        for n in range(len(selected_tile_loc)):
+            selected_tile_loc[n] = int(selected_tile_loc[n])
+        # Get player location
+        player_loc = map.get_player_loc()
+        # Check if move is valid
+        if (abs(selected_tile_loc[0] - player_loc[0]) <= 1 and
+            abs(selected_tile_loc[1] - player_loc[1]) <= 1):
+            # Valid move
+            map.set_player_loc(new_player_loc=selected_tile_loc)
+            map.update()
+            # PLACEHOLDER: gt.turn_step()
+        else:
+            valid_move = False
+            print("invalid move")
 
-    def harvest(self, tile_loc, resource):
+    def harvest(self, map, tile_loc, resource, player):
         tile = map.access(tile_loc)['tile']
-        resource_qty = tile.get_resources()[resource]
+        resource_qty = tile.check_resources()[resource]
         if resource_qty > 0:
-            tile.harvest_resource(resource)
             print(f'{resource} harvested')
+            tile.harvest_resource(resource)
+            player.inc_item(resource)
         elif resource_qty == 0:
             print(f'{resource} qty is 0')
+
+    def fire_possible(self, player_tile):
+        # Fire can be built
+        if player_tile.resources["wood"] > 0 and player_tile.resources["flint"] > 0:
+            return True
+        return False
 
     def build_fire(self, tile_loc):
         tile = map.access(tile_loc)['tile']

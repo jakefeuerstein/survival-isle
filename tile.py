@@ -2,6 +2,7 @@
 import random
 
 LAND_FOOD_PROB = [0, 0, 0, 1, 2]
+LAND_WATER_PROB = [0, 0, 0, 0, 1]
 LAND_WOOD_PROB = [0, 0, 1, 2]
 BEACH_FOOD_PROB = [0, 0, 0, 1, 2]
 BEACH_WOOD_PROB = [0, 0, 1, 2]
@@ -24,12 +25,21 @@ class Tile:
         return self.color
 
     def check_resources(self):
-        return self.resources
+        available_resources = {}
+        for resource, value in self.resources.items():
+            if value:
+                available_resources[resource] = value
+        return available_resources
 
     def check_creations(self):
+        possible_resources = {}
+        for creation, value in self.resources.items():
+            if value:
+                available_resources[resource] = value
         return self.creations
 
     def harvest_resource(self, resource):
+        if resource == 'water': return
         # reduce resource by 1
         self.resources[resource] -= 1
 
@@ -43,6 +53,7 @@ class LandTile(Tile):
         super().__init__()
         self.color = "green"
         self.resources['food'] = random.choice(LAND_FOOD_PROB)
+        self.resources['water'] = random.choice(LAND_WATER_PROB)
         self.resources['wood'] = random.choice(LAND_WOOD_PROB)
 
 
@@ -64,8 +75,8 @@ class OceanTile(Tile):
         self.creations = None
 
 
-class StreamTile(Tile):
-
-    def __init__(self):
-        super().__init__()
-        self.color = "green"
+# class StreamTile(Tile):
+#
+#     def __init__(self):
+#         super().__init__()
+#         self.color = "green"

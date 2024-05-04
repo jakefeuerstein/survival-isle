@@ -33,17 +33,30 @@ body {
     top: 50px;
 }
 
+.game-day {
+    position: absolute;
+    text-align: center;
+    left: 10%;
+    top: 150px;
+}
+
 .game-time {
     position: absolute;
     text-align: center;
     left: 10%;
-    top: 250px;
+    top: 180px;
 }
 
 .player-condition {
     position: absolute;
     left: 10%;
-    top: 350px;
+    top: 250px;
+}
+
+.items {
+    position: absolute;
+    left: 10%;
+    top: 500px;
 }
 
 .num-moves {
@@ -55,8 +68,8 @@ body {
 .actions {
     position: absolute;
     left: 30%;
-    top: 350px;
-    border: 2px solid green;
+    top: 330px;
+    width: 300px;
 }
 
 .action-button {
@@ -112,16 +125,28 @@ break
    background-color: blue;
 }
 
+#tile01:hover {
+   background-color: gray;
+}
+
 #tile02 {
    left: 100px;
    top: 0px;
    background-color: blue;
 }
 
+#tile02:hover {
+   background-color: gray;
+}
+
 #tile03 {
    left: 150px;
    top: 0px;
    background-color: blue;
+}
+
+#tile03:hover {
+   background-color: gray;
 }
 
 #tile04 {
@@ -226,28 +251,16 @@ break
    background-color: green;
 }
 
-#tile31:hover {
-   background-color: gray;
-}
-
 #tile32 {
    left: 100px;
    top: 150px;
    background-color: green;
 }
 
-#tile32:hover {
-   background-color: gray;
-}
-
 #tile33 {
    left: 150px;
    top: 150px;
    background-color: green;
-}
-
-#tile33:hover {
-   background-color: gray;
 }
 
 #tile34 {
@@ -293,6 +306,7 @@ break
     height: 50px;
     border: 2px solid yellow;
     left: 100px;
-    top: 100px;
+    top: 50px;
 }
+
 

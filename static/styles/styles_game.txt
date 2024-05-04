@@ -33,17 +33,30 @@ body {
     top: 50px;
 }
 
+.game-day {
+    position: absolute;
+    text-align: center;
+    left: 10%;
+    top: 150px;
+}
+
 .game-time {
     position: absolute;
     text-align: center;
     left: 10%;
-    top: 250px;
+    top: 180px;
 }
 
 .player-condition {
     position: absolute;
     left: 10%;
-    top: 350px;
+    top: 250px;
+}
+
+.items {
+    position: absolute;
+    left: 10%;
+    top: 500px;
 }
 
 .num-moves {
@@ -55,8 +68,8 @@ body {
 .actions {
     position: absolute;
     left: 30%;
-    top: 350px;
-    border: 2px solid green;
+    top: 330px;
+    width: 300px;
 }
 
 .action-button {

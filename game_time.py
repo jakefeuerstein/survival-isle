@@ -1,18 +1,31 @@
+DAYS_TO_RESCUE = 30
+TURNS_PER_TIME = 3
+
 class GameTime:
 
     def __init__(self):
         self.day = 1
         self.time = "early morning"
-        self.turns = 3
+        self.turns = TURNS_PER_TIME
+
+    def get_game_time(self, key: str):
+        if key == 'day':
+            return self.day
+        elif key == 'time':
+            return self.time
+        elif key == 'turns':
+            return self.turns
 
     def turn_step(self):
-        self.time_step()
+        if self.turns == 1:
+            self.time_step()
+            return
         self.turns -= 1
 
     def day_step(self):
         self.day += 1
-        self.time == "early morning"
-        self.turns = 3
+        self.time = "early morning"
+        self.turns = TURNS_PER_TIME
 
     def time_step(self):
         if self.time == "early morning":
@@ -25,3 +38,5 @@ class GameTime:
             self.time = "night"
         elif self.time == "night":
             self.day_step()
+        self.turns = TURNS_PER_TIME
+        print("time step", self.turns)

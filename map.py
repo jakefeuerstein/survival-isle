@@ -59,6 +59,9 @@ class Map:
     def get_player_loc(self):
         return self.player_loc
 
+    def get_player_tile(self):
+        return self.layout[self.player_loc[0]][self.player_loc[1]]['tile']
+
     def set_player_loc(self, new_player_loc):
         self.player_loc = new_player_loc
 

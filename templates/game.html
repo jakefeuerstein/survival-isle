@@ -9,10 +9,11 @@
     <div class="screen">
         <div class="map">
             <form action="/" method="post">
-                {% for x in range(map|length) %}  <!--Update to dyanmic range (Phase-1)-->
-                   {% for y in range(map[0]|length) %}  <!--Update to dyanmic range (Phase-1)-->
+                {% set layout = map.get_layout() %}
+                {% for x in range(layout|length) %}  <!--Update to dynamic range (Phase-1)-->
+                   {% for y in range(layout[0]|length) %}  <!--Update to dyanmic range (Phase-1)-->
                     <button class="tile" id="tile{{ x|string + y|string }}" type="submit" name="move" value="{{ x|string + ',' + y|string }}">
-                        {{ x, y }}
+<!--                        {{ x, y }}-->
                     </button>
                     {% endfor %}
                 {% endfor %}
@@ -25,12 +26,22 @@
             <div class="game-title">
                 <h1>{{ display("game_title") }}</h1>
             </div>
+            <div class="game-day">
+                <h2>Day {{ display("game_day") }}</h2>
+            </div>
+            <br>
             <div class="game-time">
-                <h2>Day {{ display("game_time")[0] }}, {{ display("game_time")[1] }}</h2>
+                <h2>{{ display("game_time") }}</h2>
             </div>
             <div class="player-condition">
                 <h2>Player Condition</h2>
                 {% for key, value in display("player_condition").items(): %}
+                <h2>  • {{ key.capitalize() }}: {{ value }} </h2>
+                {% endfor %}
+            </div>
+            <div class="items">
+                <h2>Items</h2>
+                {% for key, value in display("items").items(): %}
                 <h2>  • {{ key.capitalize() }}: {{ value }} </h2>
                 {% endfor %}
             </div>
@@ -40,9 +51,19 @@
             <div class="actions">
                 <h2>Actions: </h2>
                     <form action="/" method="post">
-                        <button class="action-button" type="submit" name="harvest" value="harvest">Harvest resource</button>
-                        <button class="action-button" type="submit" name="build_fire" value="build_fire">Build fire</button>
-                        <button class="action-button" type="submit" name="build_shelter" value="build_shelter">Build shelter</button>
+                        <h2>Move (click tile)</h2>
+                        {% for resource, value in map.get_player_tile().check_resources().items() %}
+                            <div style="display: flex; justify-content: space-between;">
+                                <button class="action-button" type="submit" name="harvest" value="{{ resource }}">Harvest {{ resource }}</button>
+                                <p>: {{ value }}</p>
+                            </div>
+                        {% endfor %}
+                        <br>
+<!--                        {% if actions.fire_possible(map.get_player_tile()): %}-->
+                            <button class="action-button" type="submit" name="build_fire" value="build_fire">Build fire (req 1 wood, 1 flint)</button>
+<!--                        {% endif %}-->
+                        <button class="action-button" type="submit" name="build_shelter" value="build_shelter">Build shelter (req 20 wood)</button>
+                        <button class="action-button" type="submit" name="sleep" value="sleep">Sleep</button>
                     </form>
             </div>
 <!--            <div class="move-dialogue">-->
