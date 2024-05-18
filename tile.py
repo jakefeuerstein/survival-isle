@@ -29,6 +29,7 @@ class Tile:
         for resource, value in self.resources.items():
             if value:
                 available_resources[resource] = value
+        print("Test: ", available_resources)
         return available_resources
 
     def check_creations(self):

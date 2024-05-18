@@ -125,28 +125,16 @@ break
    background-color: blue;
 }
 
-#tile01:hover {
-   background-color: gray;
-}
-
 #tile02 {
    left: 100px;
    top: 0px;
    background-color: blue;
 }
 
-#tile02:hover {
-   background-color: gray;
-}
-
 #tile03 {
    left: 150px;
    top: 0px;
    background-color: blue;
-}
-
-#tile03:hover {
-   background-color: gray;
 }
 
 #tile04 {
@@ -165,10 +153,6 @@ break
    left: 50px;
    top: 50px;
    background-color: green;
-}
-
-#tile11:hover {
-   background-color: gray;
 }
 
 #tile12 {
@@ -197,6 +181,10 @@ break
    background-color: blue;
 }
 
+#tile14:hover {
+   background-color: gray;
+}
+
 #tile20 {
    left: 0px;
    top: 100px;
@@ -207,10 +195,6 @@ break
    left: 50px;
    top: 100px;
    background-color: green;
-}
-
-#tile21:hover {
-   background-color: gray;
 }
 
 #tile22 {
@@ -239,6 +223,10 @@ break
    background-color: blue;
 }
 
+#tile24:hover {
+   background-color: gray;
+}
+
 #tile30 {
    left: 0px;
    top: 150px;
@@ -257,16 +245,28 @@ break
    background-color: green;
 }
 
+#tile32:hover {
+   background-color: gray;
+}
+
 #tile33 {
    left: 150px;
    top: 150px;
    background-color: green;
 }
 
+#tile33:hover {
+   background-color: gray;
+}
+
 #tile34 {
    left: 200px;
    top: 150px;
    background-color: blue;
+}
+
+#tile34:hover {
+   background-color: gray;
 }
 
 #tile40 {
@@ -305,8 +305,7 @@ break
     width: 50px;
     height: 50px;
     border: 2px solid yellow;
-    left: 100px;
-    top: 50px;
+    left: 150px;
+    top: 100px;
 }
-
 

@@ -1,7 +1,6 @@
 class Actions:
 
     def move(self, map, selected_tile_loc, gt):
-        gt.turn_step()
         # Format tile location from str to list
         selected_tile_loc = selected_tile_loc.split(',')
         for n in range(len(selected_tile_loc)):
@@ -11,6 +10,7 @@ class Actions:
         # Check if move is valid
         if (abs(selected_tile_loc[0] - player_loc[0]) <= 1 and
             abs(selected_tile_loc[1] - player_loc[1]) <= 1):
+            gt.turn_step()
             # Valid move
             map.set_player_loc(new_player_loc=selected_tile_loc)
             map.update()
@@ -19,34 +19,37 @@ class Actions:
             valid_move = False
             print("invalid move")
 
-    def harvest(self, map, tile_loc, resource, player):
+    def harvest(self, map, tile_loc, resource, player, gt):
+        gt.turn_step()
         tile = map.access(tile_loc)['tile']
         resource_qty = tile.check_resources()[resource]
         if resource_qty > 0:
             print(f'{resource} harvested')
             tile.harvest_resource(resource)
             player.inc_item(resource)
-        elif resource_qty == 0:
+        elif resource_qty == 0:  # May be unnecessary
             print(f'{resource} qty is 0')
 
-    def fire_possible(self, player_tile):
+    def fire_possible(self, player_tile):  # May be unnecessary
         # Fire can be built
         if player_tile.resources["wood"] > 0 and player_tile.resources["flint"] > 0:
             return True
         return False
 
-    def build_fire(self, tile_loc):
+    def build_fire(self, tile_loc, gt):
         tile = map.access(tile_loc)['tile']
-        if tile.resources["wood"] > 0 and tile.resources["flint"] > 0:
-            # Fire can be built
+        # Fire can be built
+        if tile.resources["wood"] > 4 and tile.resources["flint"] > 0:
+            gt.turn_step()
             tile.create("fire")
             tile.harvest_resource("wood")
             # Fire built
 
-    def build_shelter(self, tile_loc):
+    def build_shelter(self, tile_loc, gt):
         tile = map.access(tile_loc)['tile']
+        # Shelter can be built
         if tile.resources["wood"] > 0:
-            # Shelter can be built
+            gt.turn_step()
             tile.create("shelter")
             tile.harvest_resource("wood")
             # Shelter built

@@ -5,9 +5,9 @@ MAX_TEMP = 3
 MAX_SLEEP = 10
 
 # Max item values
-MAX_WOOD = 5
 MAX_WATER = 3
 MAX_FOOD = 1
+MAX_WOOD = 5
 MAX_FLINT = 1
 
 
@@ -36,10 +36,10 @@ class Player:
         #     energy = 3
         # self.speed = 3 + energy
         self.items = {
-            'water': 0,
-            'food': 0,
-            'wood': 0,
-            'flint': 0
+            'water': [0, 3],
+            'food': [0, 1],
+            'wood': [0, 5],
+            'flint': [0, 1]
         }
 
     # Return current condition
@@ -97,7 +97,10 @@ class Player:
     def inc_item(self, item):
         if item == 'water':
             self.items['water'] == MAX_WATER
-        self.items[item] += 1
+        else:
+            self.items[item][0] += 1
+            if self.items[item][0] > self.items[item][1]:
+                self.items[item][0] = self.items[item][1]
 
     def dec_item(self, item):
         self.items[item] -= 1

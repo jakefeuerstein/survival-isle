@@ -27,18 +27,18 @@ def game():
                 # Facilitate move
                 actions.move(map, selected_tile_loc, gt)
             # Harvest action
-            if request.form.get('harvest'):
+            elif request.form.get('harvest'):
                 print("harvest button clicked")
                 resource = request.form.get('harvest')
-                actions.harvest(map, tile_loc, resource, player)
+                actions.harvest(map, tile_loc, resource, player, gt)
             # Build fire action
             elif request.form.get('build_fire'):
                 print("build fire button clicked")
-                actions.build_fire(tile_loc)
+                actions.build_fire(tile_loc, gt)
             # Build shelter action
             elif request.form.get('build_shelter'):
                 print("build shelter button clicked")
-                actions.build_shelter(tile_loc)
+                actions.build_shelter(tile_loc, gt)
 
     player.update(gt)
     return render_template("game.html", map=map, actions=actions)
